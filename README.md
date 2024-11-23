@@ -13,9 +13,9 @@ The **CodeAlpha_Project_Basic_Network_Sniffer** is a Python-based project design
 ## Recommendations
 ```
 
-1.Restrict Privileges
-2.Validate Data
-3.Handle Exceptions
-4.Sanitize Output
-5.Use Libraries
+1. Restrict Privileges
+2. Validate Data
+3. Handle Exceptions
+4. Sanitize Output
+5. Use Libraries
 ```
