@@ -5,9 +5,9 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
 ## Issues Identified
 ```
 1. Root Privileges Requried
-   - Running as root for raw socket operations increases the risk of exploitation.
+    * Running as root for raw socket operations increases the risk of exploitation.
 2. No Input Validation
-   - The code assumes packet data is valid, risk crashes from malformed packet
+    - The code assumes packet data is valid, risk crashes from malformed packet
 3. Lack of Exception Handling
     - Errors like insufficient permission or invalid data are not handled, leading to program crashes.
 4. Data Exposure
