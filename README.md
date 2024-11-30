@@ -20,10 +20,12 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - **Fix**
         - Add a check to verify administrative privileges before starting:
 
-        > def check_permissions():
-            > if os.name == 'nt':
-                > return os.getuid() == 0
-            > print("Error: Please run as Administrator/root.")
+```
+        def check_permissions():
+            if os.name == 'nt':
+                return os.getuid() == 0
+            print("Error: Please run as Administrator/root.")
+```
 
 
 2. Raw Packet Data Logging
