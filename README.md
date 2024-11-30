@@ -25,10 +25,7 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - Risk: High packet capture rates can overwhelm the script.
     - Fix:
         - Throttle packet processing using a delay:
-       > import time
-       
-       > time.sleep(0.01)
-
+        > time.sleep(0.01)
 ---
 
 ## Recommendations
