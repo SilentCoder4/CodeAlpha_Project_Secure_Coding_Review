@@ -88,4 +88,4 @@ sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.
     
 ---
 
-### By addressing these recommendations, the script can become more secure and robust while adhering to secure coding practices.
+My cybersecurity internship with CodeAlpha has been an incredible learning journey. It provided hands-on experience with real-world tools and techniques, enhanced my knowledge of secure coding practices, and deepened my understanding of network security. Working on live projects was challenging. This program was a perfect blend of practical skills and theoretical knowledge, and I’m grateful for the opportunity!
