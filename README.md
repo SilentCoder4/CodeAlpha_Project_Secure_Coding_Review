@@ -32,19 +32,19 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - **Risk:** Logging raw packet data to a file can inadvertently expose sensitive information like passwords or cookies if not handled securely.
     - **Fix:**
         - Encrypt sensitive logs using libraries like `cryptography` or restrict access to the log file:
-        > os.chmod("sniffed_packets.txt", 0o600)  # File only accessible to the owner
+        ``` os.chmod("sniffed_packets.txt", 0o600)  # File only accessible to the owner ```
 
 3. Potential Memory Overflow
     - **Risk:** The script does not restrict the number or size of packets processed, potentially causing memory overflow in high-traffic environments.
     - **Fix:**
         - Use `count` or `timeout` arguments in `sniff()` to limit captured packets:
-        > sniff(prn=prc_packets, iface=iface, store=False, count=100, timeout=60)
+        ``` sniff(prn=prc_packets, iface=iface, store=False, count=100, timeout=60) ```
 
 4. Missing Logging Sanitization
     - **Risk:** Directly writing raw data to logs can lead to log injection attacks or corrupt logs if malicious payloads contain control characters.
     - **Fix:**
         - Sanitize raw data before logging:
-        > sanitized_data = raw_data.replace("\n", "\\n").replace("\r", "\\r")
+        ``` sanitized_data = raw_data.replace("\n", "\\n").replace("\r", "\\r") ```
 
 
 5. No Security Boundary Enforcement
@@ -52,13 +52,16 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     code harder to maintain.
     - **Fix:** 
         - Add filters to restrict sniffing to specific IP ranges or protocols:
-        > sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.1/24")
+        ``` sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.1/24") ```
 
 6. No Rate Limiting or Throttling
     - Risk: High packet capture rates can overwhelm the script.
     - Fix:
         - Throttle packet processing using a delay:
-        > time.sleep(0.01)
+``` 
+        import time
+        time.sleep(0.01)
+```
 ---
 
 ## Recommendations
