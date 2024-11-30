@@ -38,7 +38,7 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - Limit displayed data to relevant information to avoid exposing sensitive details.
     
 5. Use Libraries
-    - High-level libraries like Scapy can improve code mantainability and security.
+    - High-level libraries like Scapy can 'improve' code mantainability and security.
 ```
 
 this is a text test
