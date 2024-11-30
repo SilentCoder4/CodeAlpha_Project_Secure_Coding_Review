@@ -26,6 +26,7 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - Fix:
         - Throttle packet processing using a delay:
        > import time
+       
        > time.sleep(0.01)
 
 ---
