@@ -21,6 +21,12 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
 5. Hardcoded Protocols
     - Usig numerical values for Protocols instead of constants makes the
     code harder to maintain.
+6. No Rate Limiting or Throttling
+    - Risk: High packet capture rates can overwhelm the script.
+    - Fix:
+        - Throttle packet processing using a delay:
+       > import time
+       > time.sleep(0.01)
 ```
 ## Recommendations
 ```
@@ -38,8 +44,5 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - Limit displayed data to relevant information to avoid exposing sensitive details.
     
 5. Use Libraries
-    - High-level libraries like Scapy can 'improve' code mantainability and security.
+    - High-level libraries like Scapy can improve code mantainability and security.
 ```
-
-this is a text test
-> this is the text
