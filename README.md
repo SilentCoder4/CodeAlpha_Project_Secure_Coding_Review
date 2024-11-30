@@ -8,10 +8,10 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     - Uses logging to a file for better debugging and post-capture analysis.
 
 2. Use of Modular Functions:
-    - Breaking down functionality into ' sniff_packets ' and ' prc_packets ' promotes modularity and reusability.
+    - Breaking down functionality into `sniff_packets` and `prc_packets` promotes modularity and reusability.
 
 3. Output Sanitization:
-    - Attempts to decode raw data with ' error="ignore" ' to handle malformed data without crashing.
+    - Attempts to decode raw data with `error="ignore"` to handle malformed data without crashing.
 
 ## Issues Identified
 
