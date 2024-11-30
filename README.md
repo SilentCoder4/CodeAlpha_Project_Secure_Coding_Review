@@ -87,3 +87,5 @@ sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.
     - Limit resource usage and validate inputs robustly.
     
 ---
+
+###By addressing these recommendations, the script can become more secure and robust while adhering to secure coding practices.
