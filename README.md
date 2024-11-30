@@ -3,7 +3,7 @@
 The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/CodeAlpha_Project_Basic_Network_Sniffer) is a Python-based project designed for cybersecurity training. It operates as a low-level network sniffer using raw sockets to capture and analyze network traffic. Below is a security review of its implementation based on the code reviewed from GitHub repositories and common best practices.
 
 ## Issues Identified
-```
+
 1. Root Privileges Requried:
     - Running as root for raw socket operations increases the risk of exploitation.
 
@@ -27,9 +27,10 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
         - Throttle packet processing using a delay:
        > import time
        > time.sleep(0.01)
-```
+
+---
+
 ## Recommendations
-```
 
 1. Restrict Privileges
     - Use CAP_NET_RAW capabilities on linux instead of running as root.
@@ -45,4 +46,5 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
     
 5. Use Libraries
     - High-level libraries like Scapy can improve code mantainability and security.
-```
+
+---
