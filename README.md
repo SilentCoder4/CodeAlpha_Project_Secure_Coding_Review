@@ -4,7 +4,7 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
 
 ## Strengths:
 1. Basic Error Handling:
-    - Handles common exception like 'permission' effectively.
+    - Handles common exception like `permission` effectively.
     - Uses logging to a file for better debugging and post-capture analysis.
 
 2. Use of Modular Functions:
