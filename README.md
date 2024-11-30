@@ -13,25 +13,45 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
 3. Output Sanitization:
     - Attempts to decode raw data with `error="ignore"` to handle malformed data without crashing.
 
-## Issues Identified
+## Identified Vulnerabilities and Recommendations:
 
-1. Root Privileges Requried:
-    - Running as root for raw socket operations increases the risk of exploitation.
+1. Lack of Permissions Check
+    - **Risk:** Packet sniffing generally requires administrative or root privileges. Running without them will result in a `PermissionError`.
+    - **Fix**
+        - Add a check to verify administrative privileges before starting:
 
-2. No Input Validation:
-    - The code assumes packet data is valid, risk crashes from malformed packet
+        > def check_permissions():
+            > if os.name == 'nt':
+                > return os.getuid() == 0
+            > print("Error: Please run as Administrator/root.")
 
-3. Lack of Exception Handling:
-    - Errors like insufficient permission or invalid data are not handled,
-    leading to program crashes.
 
-4. Data Exposure
-    - Raw packet data is displayed in the console, Which may
-    unintentionally leak sensitive information.
+2. Raw Packet Data Logging
+    - **Risk:** Logging raw packet data to a file can inadvertently expose sensitive information like passwords or cookies if not handled securely.
+    - **Fix:**
+        - Encrypt sensitive logs using libraries like `cryptography` or restrict access to the log file:
+        > os.chmod("sniffed_packets.txt", 0o600)  # File only accessible to the owner
 
-5. Hardcoded Protocols
-    - Usig numerical values for Protocols instead of constants makes the
+3. Potential Memory Overflow
+    - **Risk:** The script does not restrict the number or size of packets processed, potentially causing memory overflow in high-traffic environments.
+    - **Fix:**
+        - Use `count` or `timeout` arguments in `sniff()` to limit captured packets:
+        > sniff(prn=prc_packets, iface=iface, store=False, count=100, timeout=60)
+
+4. Missing Logging Sanitization
+    - **Risk:** Directly writing raw data to logs can lead to log injection attacks or corrupt logs if malicious payloads contain control characters.
+    - **Fix:**
+        - Sanitize raw data before logging:
+        > sanitized_data = raw_data.replace("\n", "\\n").replace("\r", "\\r")
+
+
+5. No Security Boundary Enforcement
+    - **Risk:** The script can be exploited by an attacker within the same network to sniff unwanted traffic.
     code harder to maintain.
+    - **Fix:** 
+        - Add filters to restrict sniffing to specific IP ranges or protocols:
+        > sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.1/24")
+
 6. No Rate Limiting or Throttling
     - Risk: High packet capture rates can overwhelm the script.
     - Fix:
@@ -41,19 +61,16 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
 
 ## Recommendations
 
-1. Restrict Privileges
-    - Use CAP_NET_RAW capabilities on linux instead of running as root.
+1. Use Static Analysis Tools:
+    - Run the code through tools like Bandit or PyLint to identify potential issues.
 
-2. Validate Data
-    - Check the format and length of incoming packets.
+2. Document Responsibilities and Limitations:
+    - Add clear comments or warnings about the scope and security concerns of the script.
 
-3. Handle Exceptions
-    - Add robust error handling for socket creation, permission, and parsing issues.
+3. Enhance Logging Security:
+    - Encrypt sensitive data in logs using Python's cryptography library.
 
-4. Sanitize Output
-    - Limit displayed data to relevant information to avoid exposing sensitive details.
+4. Code Hardening:
+    - Limit resource usage and validate inputs robustly.
     
-5. Use Libraries
-    - High-level libraries like Scapy can improve code mantainability and security.
-
 ---
