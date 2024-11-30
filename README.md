@@ -2,6 +2,17 @@
 
 The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/CodeAlpha_Project_Basic_Network_Sniffer) is a Python-based project designed for cybersecurity training. It operates as a low-level network sniffer using raw sockets to capture and analyze network traffic. Below is a security review of its implementation based on the code reviewed from GitHub repositories and common best practices.
 
+## Strengths:
+1. Basic Error Handling:
+    - Handles common exception like 'permission' effectively.
+    - Uses logging to a file for better debugging and post-capture analysis.
+
+2. Use of Modular Functions:
+    - Breaking down functionality into 'sniff_packets' and 'prc_packets' promotes modularity and reusability.
+
+3. Output Sanitization:
+    - Attempts to decode raw data with 'error="ignore"' to handle malformed data without crashing.
+
 ## Issues Identified
 
 1. Root Privileges Requried:
