@@ -27,7 +27,6 @@ The [CodeAlpha_Project_Basic_Network_Sniffer](https://github.com/SilentCoder4/Co
             print("Error: Please run as Administrator/root.")
 ```
 
-
 2. Raw Packet Data Logging
     - **Risk:** Logging raw packet data to a file can inadvertently expose sensitive information like passwords or cookies if not handled securely.
     - **Fix:**
