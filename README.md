@@ -57,9 +57,6 @@ sanitized_data = raw_data.replace("\n", "\\n").replace("\r", "\\r")
     code harder to maintain.
     - **Fix:** 
         - Add filters to restrict sniffing to specific IP ranges or protocols:
-```         
-sniff(prn=prc_packets, iface=iface, store=False, filter="tcp and host 192.168.1.1/24") 
-```
 
 6. No Rate Limiting or Throttling
     - Risk: High packet capture rates can overwhelm the script.
